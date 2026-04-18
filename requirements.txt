@@ -1,0 +1,29 @@
+# Mental Health Tracker — Python Dependencies
+# Install with: pip install -r requirements.txt
+
+# Core data collection
+psutil==6.1.0          # system/process monitoring (app usage, battery, CPU)
+pynput==1.7.7          # keyboard and mouse activity tracking
+
+# Backend API
+fastapi==0.115.0       # REST API framework
+uvicorn==0.30.6        # ASGI server to run FastAPI
+python-multipart==0.0.9
+
+# Data & ML
+numpy==1.26.4
+pandas==2.2.2
+torch==2.3.1           # PyTorch for GRU model
+scikit-learn==1.5.1    # preprocessing, metrics
+gensim==4.3.2          # FastText embeddings
+nltk==3.9.1
+
+# Networking
+requests==2.32.3       # HTTP client for FL server communication
+
+# Utilities
+python-dotenv==1.0.1   # environment variables
+schedule==1.2.2        # job scheduling
+
+# Windows-specific (optional — improves active window detection)
+pywin32==306; sys_platform == "win32"

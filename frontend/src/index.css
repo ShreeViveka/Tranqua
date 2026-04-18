@@ -1,0 +1,50 @@
+/* index.css — Global Styles */
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap');
+
+:root {
+  /* Warm, calming palette */
+  --sage:        #7C9E87;
+  --sage-light:  #B8CFC0;
+  --sage-dark:   #4A7A5A;
+  --peach:       #F2A07B;
+  --peach-light: #FAD4BC;
+  --cream:       #FDF8F2;
+  --warm-white:  #FFFCF8;
+  --charcoal:    #2C2C2C;
+  --muted:       #8A8A8A;
+  --border:      #E8E0D5;
+
+  /* Mental state colors */
+  --normal:      #7C9E87;
+  --anxiety:     #E8845A;
+  --stress:      #D4A843;
+  --depression:  #7B8EC8;
+  --bipolar:     #C17BC0;
+  --suicidal:    #C05A5A;
+  --personality: #E09060;
+
+  --shadow-sm:  0 2px 8px rgba(44,44,44,0.06);
+  --shadow-md:  0 4px 20px rgba(44,44,44,0.10);
+  --shadow-lg:  0 8px 40px rgba(44,44,44,0.14);
+  --radius:     20px;
+  --radius-sm:  12px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background:  var(--cream);
+  color:       var(--charcoal);
+  min-height:  100vh;
+  overflow-x:  hidden;
+}
+
+h1, h2, h3 { font-family: 'Fraunces', serif; font-weight: 400; }
+
+::selection { background: var(--peach-light); }
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--cream); }
+::-webkit-scrollbar-thumb { background: var(--sage-light); border-radius: 3px; }

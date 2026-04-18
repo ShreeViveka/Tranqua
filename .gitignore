@@ -1,0 +1,49 @@
+# Secrets — NEVER commit these
+config.env
+*.env
+.env
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+dist/
+build/
+.eggs/
+venv/
+env/
+.venv/
+
+# Model files (large — don't push to GitHub)
+model/saved_model.pt
+model/vocab.pkl
+model/norm_stats.json
+model/training_history.json
+model/training.log
+model/model_config.json
+
+# Local data (private — never push)
+data/
+*.db
+*.sqlite
+*.log
+
+# Node
+node_modules/
+frontend/build/
+npm-debug.log*
+
+# VS Code
+.vscode/
+*.code-workspace
+
+# Windows
+Thumbs.db
+desktop.ini
+$RECYCLE.BIN/
+
+# macOS
+.DS_Store
