@@ -1,0 +1,110 @@
+{
+  "name": "tranqua",
+  "version": "1.0.0",
+  "description": "Personal mental health tracker with federated learning",
+  "author": "ShreeViveka",
+  "license": "MIT",
+  "private": true,
+
+  "main": "electron/main.js",
+
+  "scripts": {
+    "start":      "electron .",
+    "dev":        "concurrently \"npm run react\" \"npm run electron:dev\"",
+    "react":      "cd frontend && npm start",
+    "electron:dev": "wait-on http://localhost:3000 && electron . --dev",
+    "build":      "npm run build:react && npm run build:electron",
+    "build:react":    "cd frontend && npm run build",
+    "build:electron": "electron-builder --win --x64",
+    "dist":       "npm run build:react && electron-builder --win --x64 --publish=never"
+  },
+
+  "dependencies": {
+    "electron-log":    "^5.1.2",
+    "electron-store":  "^8.1.0"
+  },
+
+  "devDependencies": {
+    "electron":          "^31.0.0",
+    "electron-builder":  "^24.13.0",
+    "concurrently":      "^8.2.0",
+    "wait-on":           "^7.2.0"
+  },
+
+  "build": {
+    "appId":       "com.shreeviveka.tranqua",
+    "productName": "Tranqua",
+    "copyright":   "Copyright 2026 ShreeViveka",
+    "asar":        true,
+
+    "directories": {
+      "output": "dist",
+      "buildResources": "electron/assets"
+    },
+
+    "files": [
+      "electron/**/*",
+      "frontend/build/**/*",
+      "backend/**/*",
+      "collector/**/*",
+      "model/**/*",
+      "config.env",
+      "requirements.txt",
+      "start.py"
+    ],
+
+    "extraResources": [
+      {
+        "from": "python_dist",
+        "to":   "python_dist",
+        "filter": ["**/*"]
+      },
+      {
+        "from": "model/saved_model.pt",
+        "to":   "model/saved_model.pt"
+      },
+      {
+        "from": "model/vocab.pkl",
+        "to":   "model/vocab.pkl"
+      },
+      {
+        "from": "model/model_config.json",
+        "to":   "model/model_config.json"
+      }
+    ],
+
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch":   ["x64"]
+        }
+      ],
+      "icon": "electron/assets/icon.ico"
+    },
+
+    "nsis": {
+      "oneClick":              false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName":          "Tranqua",
+      "installerIcon":         "electron/assets/icon.ico",
+      "uninstallerIcon":       "electron/assets/icon.ico",
+      "installerHeaderIcon":   "electron/assets/icon.ico",
+      "license":               "electron/assets/LICENSE.txt"
+    },
+
+    "mac": {
+      "target": "dmg",
+      "icon":   "electron/assets/icon.icns",
+      "category": "public.app-category.healthcare-fitness"
+    },
+
+    "linux": {
+      "target": "AppImage",
+      "icon":   "electron/assets/icon.png",
+      "category": "Healthcare"
+    }
+  }
+}

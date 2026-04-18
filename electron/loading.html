@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tranqua</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;1,300&family=DM+Sans:wght@300;400&display=swap');
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: #FDF8F2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      color: #2C2C2C;
+      overflow: hidden;
+    }
+
+    .logo {
+      font-size: 52px;
+      margin-bottom: 16px;
+      animation: breathe 3s ease-in-out infinite;
+    }
+
+    @keyframes breathe {
+      0%, 100% { transform: scale(1);    opacity: 1;    }
+      50%       { transform: scale(1.08); opacity: 0.85; }
+    }
+
+    h1 {
+      font-family: 'Fraunces', serif;
+      font-size: 32px;
+      font-weight: 400;
+      color: #4A7A5A;
+      margin-bottom: 8px;
+      letter-spacing: -0.5px;
+    }
+
+    .tagline {
+      font-size: 13px;
+      color: #9A9A9A;
+      margin-bottom: 48px;
+      letter-spacing: 0.3px;
+    }
+
+    .loader {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .dots {
+      display: flex;
+      gap: 8px;
+    }
+
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #7C9E87;
+      animation: bounce 1.2s ease-in-out infinite;
+    }
+
+    .dot:nth-child(2) { animation-delay: 0.2s; }
+    .dot:nth-child(3) { animation-delay: 0.4s; }
+
+    @keyframes bounce {
+      0%, 80%, 100% { transform: scale(0.8); opacity: 0.5; }
+      40%           { transform: scale(1.2); opacity: 1;   }
+    }
+
+    .status {
+      font-size: 12px;
+      color: #B8CFC0;
+      letter-spacing: 0.5px;
+    }
+
+    .version {
+      position: fixed;
+      bottom: 20px;
+      font-size: 11px;
+      color: #D0C8BE;
+    }
+
+    /* Decorative background circles */
+    .circle {
+      position: fixed;
+      border-radius: 50%;
+      background: rgba(124, 158, 135, 0.06);
+    }
+    .c1 { width: 300px; height: 300px; top: -100px; right: -80px; }
+    .c2 { width: 200px; height: 200px; bottom: -60px; left: -60px; }
+    .c3 { width: 120px; height: 120px; bottom: 80px; right: 40px; }
+  </style>
+</head>
+<body>
+  <div class="circle c1"></div>
+  <div class="circle c2"></div>
+  <div class="circle c3"></div>
+
+  <div class="logo">🌿</div>
+  <h1>Tranqua</h1>
+  <p class="tagline">Your personal mental health companion</p>
+
+  <div class="loader">
+    <div class="dots">
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+    </div>
+    <p class="status" id="status">Starting up...</p>
+  </div>
+
+  <p class="version" id="version">v1.0.0</p>
+
+  <script>
+    const messages = [
+      'Starting up...',
+      'Loading your data...',
+      'Preparing your tracker...',
+      'Almost ready...',
+    ];
+    let i = 0;
+    const statusEl = document.getElementById('status');
+
+    setInterval(() => {
+      i = (i + 1) % messages.length;
+      statusEl.textContent = messages[i];
+    }, 1800);
+  </script>
+</body>
+</html>
